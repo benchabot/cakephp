@@ -8,14 +8,12 @@ services:
   - postgresql
   - mysql
 
-addons:
-  postgresql: '9.6'
-
 cache:
   directories:
     - $HOME/.composer/cache
 
 php:
+  - 7.4
   - nightly
 
 env:
