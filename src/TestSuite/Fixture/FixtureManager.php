@@ -309,11 +309,7 @@ class FixtureManager
                 }
 
                 foreach ($fixtures as $fixture) {
-                    if (!in_array($fixture, $this->_insertionMap[$configName], true)) {
-                        $this->_setupTable($fixture, $db, $tables, $test->dropTables);
-                    } else {
-                        $fixture->truncate($db);
-                    }
+                    $this->_setupTable($fixture, $db, $tables, $test->dropTables);
                 }
 
                 foreach ($fixtures as $fixture) {

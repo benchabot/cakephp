@@ -53,6 +53,8 @@ class QueryTest extends TestCase
 
     public $autoFixtures = false;
 
+    public $dropTables = true;
+
     public const ARTICLE_COUNT = 3;
     public const AUTHOR_COUNT = 4;
     public const COMMENT_COUNT = 6;
