@@ -246,10 +246,6 @@ class FixtureManager
         bool $drop = true
     ): void {
         $configName = $db->configName();
-        $isFixtureSetup = $this->isFixtureSetup($configName, $fixture);
-        if ($isFixtureSetup) {
-            return;
-        }
 
         $table = $fixture->sourceName();
         $exists = in_array($table, $sources, true);
@@ -460,21 +456,19 @@ class FixtureManager
             $db = ConnectionManager::get($fixture->connection());
         }
 
-        if (!$this->isFixtureSetup($db->configName(), $fixture)) {
+        if ($dropTables || !$this->isFixtureSetup($db->configName(), $fixture)) {
             $sources = $db->getSchemaCollection()->listTables();
             $this->_setupTable($fixture, $db, $sources, $dropTables);
-        }
-
-        if (!$dropTables) {
+        } else {
             if ($fixture instanceof ConstraintsInterface) {
                 $fixture->dropConstraints($db);
             }
             $fixture->truncate($db);
+            if ($fixture instanceof ConstraintsInterface) {
+                $fixture->createConstraints($db);
+            }
         }
 
-        if ($fixture instanceof ConstraintsInterface) {
-            $fixture->createConstraints($db);
-        }
         $fixture->insert($db);
     }
 
