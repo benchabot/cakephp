@@ -38,12 +38,12 @@ class TranslateBehaviorTest extends TestCase
      * @var array
      */
     protected $fixtures = [
-        'core.Articles',
-        'core.ArticlesTags',
         'core.Authors',
-        'core.Sections',
-        'core.SpecialTags',
+        'core.Articles',
         'core.Tags',
+        'core.ArticlesTags',
+        'core.SpecialTags',
+        'core.Sections',
         'core.Comments',
         'core.Translates',
     ];

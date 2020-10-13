@@ -384,10 +384,8 @@ class FixtureManager
             if ($logQueries && !$this->_debug) {
                 $db->disableQueryLogging();
             }
-            $db->transactional(function (ConnectionInterface $db) use ($fixtures, $operation): void {
-                $db->disableConstraints(function (ConnectionInterface $db) use ($fixtures, $operation): void {
-                    $operation($db, $fixtures);
-                });
+            $db->disableConstraints(function (ConnectionInterface $db) use ($fixtures, $operation): void {
+                $operation($db, $fixtures);
             });
             if ($logQueries) {
                 $db->enableQueryLogging(true);

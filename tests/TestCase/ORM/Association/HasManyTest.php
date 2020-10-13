@@ -42,12 +42,12 @@ class HasManyTest extends TestCase
      * @var array
      */
     protected $fixtures = [
-        'core.Comments',
-        'core.Articles',
-        'core.Authors',
         'core.Users',
-        'core.ArticlesTags',
+        'core.Comments',
+        'core.Authors',
+        'core.Articles',
         'core.Tags',
+        'core.ArticlesTags',
     ];
 
     /**

@@ -47,14 +47,14 @@ class QueryTest extends TestCase
      * @var array
      */
     protected $fixtures = [
+        'core.Authors',
         'core.Articles',
+        'core.Tags',
         'core.ArticlesTags',
         'core.ArticlesTranslations',
-        'core.Authors',
         'core.Comments',
         'core.Datatypes',
         'core.Posts',
-        'core.Tags',
     ];
 
     /**
